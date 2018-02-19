@@ -18,6 +18,7 @@ class App extends Component{
             tasks: tasks
         };
         this.saveTask = this.saveTask.bind(this);
+        this.doneTodo = this.doneTodo.bind(this);
     }
     saveTask(task){
         this.setState(function(prevState){
@@ -26,7 +27,15 @@ class App extends Component{
                 value: task,
                 done: false
             });
-            console.log(task);
+            return prevState;
+        });
+        console.log("saved");
+    }
+    doneTodo(taskId){
+        return this.setState(function(prevState){
+            prevState.tasks.forEach(task => {
+               task.done = task.id===taskId?true:task.done
+            });
             return prevState;
         });
     }
@@ -34,7 +43,7 @@ class App extends Component{
         return (
             <div className="todo">
                 <AddTask onSubmitHandler={this.saveTask}/>
-                <List tasks={tasks}/>
+                <List onRemoveTask={this.doneTodo} tasks={tasks}/>
             </div>            
         )
     }

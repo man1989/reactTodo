@@ -1,35 +1,3 @@
-@bgColor: grey;
-body{
-   background-color: @bgColor
-}
-
-.add-task {
-    max-width: 300px;
-    width: 100%;
-    height: 31px;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    padding-left: 10px;
-    &:focus{
-        outline:0;
-    }
-}
-
-.task {
-    width: 100%;
-    border: 1px solid;
-    border-bottom: 1px solid;
-    border-top: none;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 40px;
-    height: 40px;
-    &:nth-child(1) {
-        border-top: 1px solid;
-    }
-}
-
 .todo {
     display: flex;
     flex-direction: column;
@@ -37,4 +5,57 @@ body{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px;    
+}
+
+.add-task {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 9px 0px;
+    height: 45px;
+    margin-bottom: 3px;
+    &:focus{
+        outline:0;
+    }
+}
+.task {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 1px 0px;
+    min-height: 40px;
+    font-family: fantasy;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display:inline-block;
+    &.done{
+        ~.close{
+            cursor: initial;
+            opacity: 0.5;
+        }
+        text-decoration: line-through;
+    }
+}
+.close{
+    display: inline-block;
+    width: 15px;
+    line-height: 15px;
+    position: absolute;
+    text-align: center;
+    padding: 12px;
+    vertical-align: middle;
+    box-shadow: 0px 0px 1px 0px black;
+    cursor: pointer;
+    font-family: fantasy;
+    color: red;
+    margin-left: -39px;
+    user-select: none;
 }
