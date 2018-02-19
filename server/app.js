@@ -7,7 +7,10 @@ const webpackConfig = require("../config/webpack.config");
 const compiler = require("webpack")(webpackConfig);
 const middleware = require("webpack-dev-middleware");
 
-app.use(middleware(compiler));
+app.use(middleware(compiler, {
+    publicPath: '/static/'
+}));
+  
 app.use("/static", express.static("dist"));
 app.get("/", (req, res, next)=>{
     res.set("content-type", "text/html");

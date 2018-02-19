@@ -9,8 +9,8 @@ let tasks = [
     {id:2, value:"gold", done: false},
     {id:3, value:"potato", done: false},
     {id:4, value:"10km walk", done: false},
-    {id:5, value:"meet joe black", done: false}
-];
+    {id:5, value:"meet joe black on the roof", done: false}
+]
 let root = document.getElementById("container");
 class App extends Component{
     constructor(){
@@ -30,7 +30,6 @@ class App extends Component{
             });
             return prevState;
         });
-        console.log("saved");
     }
     doneTodo(taskId){
         return this.setState(function(prevState){

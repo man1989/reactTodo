@@ -8,7 +8,7 @@ const __PATH_VARIABLE__ = {
     DIST: path.resolve(__dirname, "../dist")
 }
 const extractLess = new ExtractTextPlugin({
-    filename:"/styles/style.css"
+    filename: "styles/style.css"
 });
 
 const htmlPlugin = new HtmlWebpackPlugin({
@@ -20,39 +20,41 @@ let jsConfig = {
     entry: {
         app: `${__PATH_VARIABLE__.SRC}/app.js`
     },
-    output:{
-        filename:"js/[name].bundle.js",
-        path:`${__PATH_VARIABLE__.DIST}/`,
-        publicPath:"/static/"
+    output: {
+        filename: "js/[name].bundle.js",
+        path: `${__PATH_VARIABLE__.DIST}/`,
+        publicPath: "static/"
     },
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
-                test:/\.js$/, 
-                exclude:/node_module/,
-                use:[{
-                    loader:"babel-loader",
-                    options:{
-                        presets:["react"]
+                test: /\.js$/,
+                exclude: /node_module/,
+                use: [
+                    {
+                        loader: "eslint-loader"
+                    },
+                    {
+                        loader: "babel-loader"
+                    }, 
+                    {
+                        loader: "react-hot-loader/webpack"
                     }
-                },{
-                    loader:"react-hot-loader/webpack"                    
-                }
                 ]
             },
             {
-                test:/\.less$/,
+                test: /\.less$/,
                 use: extractLess.extract({
-                    use:[{
-                        loader:"css-loader"
-                    },{
+                    use: [{
+                        loader: "css-loader"
+                    }, {
                         loader: "less-loader"
                     }]
                 })
-            }            
+            }
         ]
     },
-    plugins:[extractLess, htmlPlugin]
+    plugins: [new webpack.HotModuleReplacementPlugin(), extractLess, htmlPlugin]
 }
 
 module.exports = jsConfig;
