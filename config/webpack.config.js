@@ -54,7 +54,7 @@ let jsConfig = {
             }
         ]
     },
-    plugins: [new webpack.HotModuleReplacementPlugin(), extractLess, htmlPlugin]
+    plugins: [extractLess, htmlPlugin]
 }
 
 module.exports = jsConfig;
