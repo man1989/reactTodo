@@ -2,13 +2,14 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import AddTask from "./components/AddTask";
 import List from "./components/List";
+import style from "./styles/style.less";
 
 let tasks = [
     {id:1, value:"milk", done: false},
     {id:2, value:"gold", done: false},
     {id:3, value:"potato", done: false},
     {id:4, value:"10km walk", done: false},
-    {id:5, value:"meet joe", done: false}
+    {id:5, value:"meet joe black", done: false}
 ];
 let root = document.getElementById("container");
 class App extends Component{
